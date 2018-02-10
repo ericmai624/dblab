@@ -12,6 +12,7 @@ app.use(middleware.auth); // authenticate all incoming requests first
 app.route('/')
   .get(controllers.lookup)
   .post(controllers.create)
+  .patch(controllers.update)
 ;
 
 app.post('/login', controllers.login);
