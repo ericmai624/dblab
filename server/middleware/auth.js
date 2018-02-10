@@ -4,17 +4,25 @@ import chalk from 'chalk';
 import config from 'config';
 
 export default async (req, res, next) => {
-  let authorization = req.headers['Authorization'];
+  console.log(chalk.bgRed(chalk.white('Verifying incoming request')));
+  let authorization = req.get('Authorization');
 
   if (!authorization) return res.sendStatus(401);
 
   try {
+    console.log(chalk.bgBlue(chalk.white('Decoding incoming request token')));
     let { secret } = config.jwt;
-    let token = authorization.replace(/Bearer /i, '');
     let verify = util.promisify(jwt.verify);
+
+    let token = authorization.replace(/Bearer /i, '');
+
     let decoded = await verify(token, secret);
+
     if (!decoded) return res.sendStatus(401);
-    req.payload = decoded;
+
+    req.payload = decoded.data;
+
+    console.log(chalk.bgGreen(chalk.white('Verified!')));
     next();
   } catch (err) {
     console.log(chalk.bgRed(chalk.white('An error has occured when trying to verify access token: ', err)));
