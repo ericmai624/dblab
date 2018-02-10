@@ -1,0 +1,29 @@
+{
+  "name": "dblab",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/ericmai624/dblab.git",
+  "author": "Eric Mai <enmai1988@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon server",
+    "start": "NODE_ENV=production node server"
+  },
+  "dependencies": {
+    "babel-plugin-module-resolver": "^3.0.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-register": "^6.26.0",
+    "bcrypt": "^1.0.3",
+    "body-parser": "^1.18.2",
+    "chalk": "^2.3.0",
+    "config": "^1.29.4",
+    "express": "^4.16.2",
+    "jsonwebtoken": "^8.1.1",
+    "mongoose": "^5.0.4"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.2.1",
+    "eslint": "^4.17.0"
+  }
+}
