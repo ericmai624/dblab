@@ -28,7 +28,7 @@ export default async (req, res) => {
     
     res.json(updated.toObject());
   } catch (err) {
-    console.log(chalk.bgRed(chalk.white('An error has occured when trying to get user by id: ', err)));
+    console.log(chalk.bgRed(chalk.white('An error has occured when trying to patch user profile: ', err)));
     res.sendStatus(500);
   }
 };

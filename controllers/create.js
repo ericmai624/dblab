@@ -13,7 +13,7 @@ export default async (req, res) => {
     
     res.json(newUser.toObject());
   } catch (err) {
-    console.log(chalk.bgRed(chalk.white('An error has occured when trying to get user by id: ', err)));
+    console.log(chalk.bgRed(chalk.white('An error has occured when trying to create user profile: ', err)));
     res.sendStatus(500);
   }
 };
