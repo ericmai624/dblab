@@ -1,1 +1,2 @@
-export { default as UserController } from './user';
+export { default as lookup } from './lookup';
+export { default as login } from './login';
