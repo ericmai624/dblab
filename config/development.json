@@ -1,0 +1,9 @@
+{
+  "database": {
+    "uri": "mongodb://localhost/cleverlab_dev"
+  },
+
+  "jwt": {
+    "secret": "BFE4A2022C30B572DF5ECBEBF4AC7479F45946B40953B7B14C4C36F58B4B2052"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "database": {
+    "uri": "mongodb://username:password@localhost/database_dev"
+  },
+
+  "jwt": {
+    "secret": "shhhhhhh"
+  }
+}
