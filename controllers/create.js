@@ -1,13 +1,17 @@
 import chalk from 'chalk';
+import bcrypt from 'bcrypt';
 import config from 'config';
 import models from 'models';
 
 export default async (req, res) => {
   try {
-    let { id, email } = req.payload;
-    if (id) return res.json((await models.User.findById(id)).toObject());
-    if (email) return res.json((await models.User.findOne({ email })).toObject());
-    return res.sendStatus(406);
+    let { password } = req.payload;
+
+    req.payload.password = await bcrypt.hash(password, 10);
+
+    let newUser = await models.User.create(req.payload);
+    
+    res.json(newUser.toObject());
   } catch (err) {
     console.log(chalk.bgRed(chalk.white('An error has occured when trying to get user by id: ', err)));
     res.sendStatus(500);

@@ -44,6 +44,14 @@ export default new Schema(
     notifications: [ { type: Schema.Types.ObjectId, ref: 'Notification' } ]
   },
   {
-    timestamps: true
+    timestamps: true,
+    toObject: {
+      // remove password when converting from document to Javascript object using toObject method
+      // toObject is usually called when sending the document to api through res.json
+      transform: (doc, ret, opts) => {
+        delete ret.password;
+        return ret;
+      }
+    }
   }
 );
