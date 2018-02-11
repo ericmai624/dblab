@@ -9,12 +9,12 @@ export default async (req, res, next) => {
   if (!authorization) return res.sendStatus(401);
 
   try {
-    let { secret } = config.jwt;
+    let { profiledot } = config;
     let verify = util.promisify(jwt.verify);
 
     let token = authorization.replace(/Bearer /i, '');
 
-    let decoded = await verify(token, secret);
+    let decoded = await verify(token, profiledot.secret);
 
     if (!decoded) return res.sendStatus(401);
 

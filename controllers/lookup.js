@@ -5,9 +5,18 @@ import models from 'models';
 export default async (req, res) => {
   try {
     let { id, email } = req.payload;
-    if (id) return res.json((await models.User.findById(id)).toObject());
-    if (email) return res.json((await models.User.findOne({ email })).toObject());
-    return res.sendStatus(406);
+    let user = null;
+
+    if (!id && !email) {
+      return res.sendStatus(400);
+    } else if (id) {
+      user = await models.User.findById(id);
+    } else if (email) {
+      user = await models.User.findOne({ email });
+    }
+
+    if (!user) return res.sendStatus(404);
+    res.json(user.toObject());
   } catch (err) {
     console.log(chalk.bgRed(chalk.white('An error has occured when trying to get user profile: ', err)));
     res.sendStatus(500);
