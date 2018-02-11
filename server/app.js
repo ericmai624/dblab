@@ -17,4 +17,4 @@ app.route('/')
 
 app.post('/login', controllers.login);
 
-app.listen(port, () => console.log(`> Ready to accept connections on port ${port}`));
+app.listen(port, console.log.bind(console, `> Ready to accept connections on port ${port}`));
